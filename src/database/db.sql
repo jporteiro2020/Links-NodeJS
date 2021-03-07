@@ -1,0 +1,26 @@
+create database if not exists Links;
+
+use Links;
+
+CREATE TABLE USUARIOS(
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    username VARCHAR(16) NOT NULL,
+    password VARCHAR(60) NOT NULL,
+    fullname VARCHAR(100) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+DESC USUARIOS;
+
+CREATE TABLE ENLACES(
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    titulo VARCHAR(150) NOT NULL,
+    url VARCHAR(255) NOT NULL,
+    descripcion TEXT,
+    user_id INT(11) NOT NULL,
+    creado TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    CONSTRAINT fk_usuario FOREIGN KEY (user_id) REFERENCES USUARIOS(id)
+);
+
+DESC ENLACES;
